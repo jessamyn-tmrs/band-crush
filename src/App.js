@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import blue from './assets/blue.png'
-import green from './assets/green.png'
-import pink from './assets/pink.png'
-import teal from './assets/teal.png'
-import violet from './assets/violet.png'
-import yellow from './assets/yellow.png'
+// import blue from './assets/blue.png'
+// import green from './assets/green.png'
+// import pink from './assets/pink.png'
+// import teal from './assets/teal.png'
+// import violet from './assets/violet.png'
+// import yellow from './assets/yellow.png'
 import blank from './assets/blank.png'
 import ham from './assets/band-ham.png'
 import steve from './assets/band-steve.png'
@@ -27,7 +27,7 @@ function App() {
     const [currentColorArrangement, setCurrentColorArrangement] = useState([]);
     const [squareBeingDragged, setSquareBeingDragged] = useState(null);
     const [squareBeingReplaced, setSquareBeingReplaced] = useState(null);
-
+// eslint-disable-next-line
     const checkForColumnOfFour = () => {
         for (let i = 0; i <= 39; i++) {
             const columnOfFour = [i, i + width, i + width * 2, i + width * 3];
@@ -39,7 +39,7 @@ function App() {
             }
         }
     }
-
+// eslint-disable-next-line
     const checkForRowOfFour = () => {
         for (let i = 0; i < 64; i++) {
             const rowOfFour = [i, i + 1, i + 2, i + 3];
@@ -53,7 +53,7 @@ function App() {
             }
         }
     }
-
+// eslint-disable-next-line
     const checkForColumnOfThree = () => {
         for (let i = 0; i <= 47; i++) {
             const columnOfThree = [i, i + width, i + width * 2];
@@ -64,7 +64,7 @@ function App() {
             }
         }
     }
-
+// eslint-disable-next-line
     const checkForRowOfThree = () => {
         for (let i = 0; i < 64; i++) {
             const rowOfThree = [i, i + 1, i + 2];
@@ -78,7 +78,7 @@ function App() {
             }
         }
     }
-
+// eslint-disable-next-line
     const moveIntoSquareBelow = () => {
         for (let i = 0; i <= 55; i++) {
             const firstRow = [0,1,2,3,4,5,6,7]
