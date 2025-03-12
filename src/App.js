@@ -197,6 +197,9 @@ function App() {
                     onDragOver={(e) => e.preventDefault()}
                     onDragEnter={(e) => e.preventDefault()}
                     onDragLeave={(e) => e.preventDefault()}
+                    onTouchStartCapture={e => e.preventDefault()}
+                    onTouchMoveCapture={e => e.preventDefault()}
+                    onTouchEndCapture={e => e.preventDefault()}
                 />
             ))}
         </div>
