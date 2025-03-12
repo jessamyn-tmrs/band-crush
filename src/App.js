@@ -100,12 +100,16 @@ function App() {
         // console.log('dragStart');
         // console.log(e.target);
         setSquareBeingDragged(e.target);
+        // squareBeingDragged.addEventListener('mousedown', startDrag, false);
+        // squareBeingDragged.addEventListener('touchstart', startDrag, false);
     }
 
     const dragDrop = (e) => {
         // console.log('dragDrop');
         // console.log(e.target);
         setSquareBeingReplaced(e.target);
+        // setSquareBeingReplaced.addEventListener('mousemove', continueDrag, false);
+        // setSquareBeingReplaced.addEventListener('touchmove', continueDrag, false);
     }
     
     const dragEnd = (e) => {
@@ -137,6 +141,10 @@ function App() {
             (isAColumnOfFour || isARowOfFour || isAColumnOfThree || isARowOfThree)) {
             setSquareBeingDragged(null);
             setSquareBeingReplaced(null);
+            // setSquareBeingDragged.addEventListener('mouseup', endDrag, false);
+            // setSquareBeingDragged.addEventListener('touchend', endDrag, false);
+            // setSquareBeingReplaced.addEventListener('mouseup', endDrag, false);
+            // setSquareBeingReplaced.addEventListener('touchend', endDrag, false);
         } else {
             currentColorArrangement[squareBeingReplacedId] = squareBeingReplaced.getAttribute('src');
             currentColorArrangement[squareBeingDraggedId] = squareBeingDragged.getAttribute('src');
@@ -181,8 +189,11 @@ function App() {
                     data-id={index}
                     draggable={true}
                     onDragStart={dragStart}
+                    onTouchStart={dragStart}
                     onDrop={dragDrop}
+                    onTouchMove={dragDrop}
                     onDragEnd={dragEnd}
+                    onTouchEnd={dragEnd}
                     onDragOver={(e) => e.preventDefault()}
                     onDragEnter={(e) => e.preventDefault()}
                     onDragLeave={(e) => e.preventDefault()}
@@ -194,3 +205,54 @@ function App() {
 }
 
 export default App;
+
+// ----------------------------------------------------------------
+
+// Listen for both mousedown and touchstart
+// draggableElement.addEventListener('mousedown', startDrag, false);
+// draggableElement.addEventListener('touchstart', startDrag, false);
+
+// function startDrag(event) {
+//   // Check if it's a mouse or touch event
+//   const isTouch = event.type === 'touchstart';
+
+//   // Get the starting coordinates based on the event type
+//   let startX = isTouch ? event.touches[0].clientX : event.clientX;
+//   let startY = isTouch ? event.touches[0].clientY : event.clientY;
+
+//   // Add event listeners for drag and drop actions on document
+//   document.addEventListener('mousemove', continueDrag, false);
+//   document.addEventListener('touchmove', continueDrag, false);
+//   document.addEventListener('mouseup', endDrag, false);
+//   document.addEventListener('touchend', endDrag, false);
+
+//   // Optionally, add the following to prevent scrolling on touchmove
+//   if (isTouch) {
+//     document.addEventListener('touchmove', function(e) {
+//       e.preventDefault();
+//     });
+//   }
+
+//   function continueDrag(event){
+//     let currentX, currentY;
+
+//     if(event.type === 'touchmove'){
+//        currentX = event.touches[0].clientX;
+//        currentY = event.touches[0].clientY;
+//     } else {
+//        currentX = event.clientX;
+//        currentY = event.clientY;
+//     }
+
+//     // Update the dragged element's position based on current coordinates
+//     draggableElement.style.transform = `translate(${currentX - startX}px, ${currentY - startY}px)`;
+//   }
+
+//   function endDrag(){
+//     // Remove event listeners
+//     document.removeEventListener('mousemove', continueDrag, false);
+//     document.removeEventListener('touchmove', continueDrag, false);
+//     document.removeEventListener('mouseup', endDrag, false);
+//     document.removeEventListener('touchend', endDrag, false);
+//   }
+// }
