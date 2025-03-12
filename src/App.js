@@ -82,7 +82,7 @@ function App() {
     const moveIntoSquareBelow = () => {
         for (let i = 0; i <= 55; i++) {
             const firstRow = [0,1,2,3,4,5,6,7]
-            const isFirstRow = firstRow.includes(i)
+            // const isFirstRow = firstRow.includes(i)
         
             if (firstRow && currentColorArrangement[i] === blank) {
                 let randomNumber = Math.floor(Math.random() * candyColors.length);
