@@ -97,23 +97,26 @@ function App() {
     }
 
     const dragStart = (e) => {
-        // console.log('dragStart');
-        // console.log(e.target);
+        // e.preventDefault();
+        console.log('dragStart');
+        console.log(e.target);
         setSquareBeingDragged(e.target);
         // squareBeingDragged.addEventListener('mousedown', startDrag, false);
-        // squareBeingDragged.addEventListener('touchstart', startDrag, false);
+        e.target.addEventListener('touchstart', dragStart, false);
     }
 
     const dragDrop = (e) => {
-        // console.log('dragDrop');
+        // e.preventDefault();
+        console.log('dragDrop');
         // console.log(e.target);
         setSquareBeingReplaced(e.target);
         // setSquareBeingReplaced.addEventListener('mousemove', continueDrag, false);
-        // setSquareBeingReplaced.addEventListener('touchmove', continueDrag, false);
+        e.target.addEventListener('touchmove', dragDrop, false);
     }
     
     const dragEnd = (e) => {
-        // console.log('dragEnd');
+        // e.preventDefault()
+        console.log('dragEnd');
         // console.log(e.target);
 
         const squareBeingDraggedId = parseInt(squareBeingDragged.getAttribute('data-id'));
@@ -142,9 +145,9 @@ function App() {
             setSquareBeingDragged(null);
             setSquareBeingReplaced(null);
             // setSquareBeingDragged.addEventListener('mouseup', endDrag, false);
-            // setSquareBeingDragged.addEventListener('touchend', endDrag, false);
+            // setSquareBeingDragged.addEventListener('touchend', dragEnd, false);
             // setSquareBeingReplaced.addEventListener('mouseup', endDrag, false);
-            // setSquareBeingReplaced.addEventListener('touchend', endDrag, false);
+            // setSquareBeingReplaced.addEventListener('touchend', dragEnd, false);
         } else {
             currentColorArrangement[squareBeingReplacedId] = squareBeingReplaced.getAttribute('src');
             currentColorArrangement[squareBeingDraggedId] = squareBeingDragged.getAttribute('src');
@@ -188,18 +191,18 @@ function App() {
                     src={color}
                     data-id={index}
                     draggable={true}
-                    // onDragStart={dragStart}
+                    onDragStart={dragStart}
                     onTouchStart={dragStart}
-                    // onDrop={dragDrop}
+                    onDrop={dragDrop}
                     onTouchMove={dragDrop}
-                    // onDragEnd={dragEnd}
+                    onDragEnd={dragEnd}
                     onTouchEnd={dragEnd}
-                    // onDragOver={(e) => e.preventDefault()}
-                    // onDragEnter={(e) => e.preventDefault()}
-                    // onDragLeave={(e) => e.preventDefault()}
-                    onTouchStartCapture={e => e.preventDefault()}
-                    onTouchMoveCapture={e => e.preventDefault()}
-                    onTouchEndCapture={e => e.preventDefault()}
+                    onDragOver={(e) => e.preventDefault()}
+                    onDragEnter={(e) => e.preventDefault()}
+                    onDragLeave={(e) => e.preventDefault()}
+                    // onTouchStartCapture={(e) => e.preventDefault()}
+                    // onTouchMoveCapture={(e) => e.preventDefault()}
+                    // onTouchEndCapture={(e) => e.preventDefault()}
                 />
             ))}
         </div>
