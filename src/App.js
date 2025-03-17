@@ -188,15 +188,15 @@ function App() {
                     src={color}
                     data-id={index}
                     draggable={true}
-                    onDragStart={dragStart}
+                    // onDragStart={dragStart}
                     onTouchStart={dragStart}
-                    onDrop={dragDrop}
+                    // onDrop={dragDrop}
                     onTouchMove={dragDrop}
-                    onDragEnd={dragEnd}
+                    // onDragEnd={dragEnd}
                     onTouchEnd={dragEnd}
-                    onDragOver={(e) => e.preventDefault()}
-                    onDragEnter={(e) => e.preventDefault()}
-                    onDragLeave={(e) => e.preventDefault()}
+                    // onDragOver={(e) => e.preventDefault()}
+                    // onDragEnter={(e) => e.preventDefault()}
+                    // onDragLeave={(e) => e.preventDefault()}
                     onTouchStartCapture={e => e.preventDefault()}
                     onTouchMoveCapture={e => e.preventDefault()}
                     onTouchEndCapture={e => e.preventDefault()}
